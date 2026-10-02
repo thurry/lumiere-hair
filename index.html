@@ -426,119 +426,100 @@
     </h2>
 
 
-  <form
+ ```html
+<form
+
     class="reservation-form"
     action="https://formspree.io/f/xnpnyenl"
     method="POST"
 >
-<input type="hidden" name="_next" value="https://thurry.github.io/lumiere-hair/thanks.html">
-        <label>
-            お名前
 
-            <input
-                type="text"
-                id="name"
-                name="name"
-                placeholder="山田 花子"
-            >
+    <input
+        type="hidden"
+        name="_next"
+        value="https://thurry.github.io/lumiere-hair/thanks.html"
+    >
 
-        </label>
+    <label>
+        お名前
+        <input
+            type="text"
+            name="name"
+            placeholder="山田 花子"
+        >
+    </label>
 
+    <label>
+        メールアドレス
+        <input
+            type="email"
+            name="email"
+            placeholder="example@email.com"
+        >
+    </label>
 
-        <label>
-            メールアドレス
+    <label>
+        電話番号
+        <input
+            type="tel"
+            name="tel"
+            placeholder="090-1234-5678"
+        >
+    </label>
 
-            <input
-                type="email"
-                name="email"
-                placeholder="example@email.com"
-            >
+    <label>
+        メニュー
+        <select name="menu">
+            <option>カット</option>
+            <option>カラー</option>
+            <option>カット＋カラー</option>
+            <option>パーマ</option>
+            <option>トリートメント</option>
+            <option>ヘッドスパ</option>
+            <option>カット＋パーマ</option>
+            <option>カット＋トリートメント</option>
+            <option>前髪カット</option>
+        </select>
+    </label>
 
-        </label>
+    <label>
+        希望日
+        <input
+            type="date"
+            name="date"
+        >
+    </label>
 
+    <label>
+        希望時間
+        <select name="time">
+            <option>10:00</option>
+            <option>11:00</option>
+            <option>12:00</option>
+            <option>13:00</option>
+            <option>14:00</option>
+            <option>15:00</option>
+            <option>16:00</option>
+            <option>17:00</option>
+            <option>18:00</option>
+        </select>
+    </label>
 
-        <label>
-            電話番号
+    <label>
+        その他・ご要望
+        <textarea
+            name="message"
+            placeholder="ご希望などがあれば入力してください"
+        ></textarea>
+    </label>
 
-            <input
-                type="tel"
-                name="tel"
-                placeholder="090-1234-5678"
-            >
+    <button type="submit">
+        予約する
+    </button>
 
-        </label>
+</form>
+```
 
-
-        <label>
-            メニュー
-
-            <select
-                id="reservation-menu"
-                name="menu"
-            >
-
-                <option>カット</option>
-                <option>カラー</option>
-                <option>カット＋カラー</option>
-                <option>パーマ</option>
-                <option>トリートメント</option>
-                <option>ヘッドスパ</option>
-                <option>カット＋パーマ</option>
-                <option>カット＋トリートメント</option>
-                <option>前髪カット</option>
-
-            </select>
-
-        </label>
-
-
-        <label>
-            希望日
-
-            <input
-                type="date"
-                id="date"
-                name="date"
-            >
-
-        </label>
-
-
-        <label>
-            希望時間
-
-            <select name="time">
-
-                <option>10:00</option>
-                <option>11:00</option>
-                <option>12:00</option>
-                <option>13:00</option>
-                <option>14:00</option>
-                <option>15:00</option>
-                <option>16:00</option>
-                <option>17:00</option>
-                <option>18:00</option>
-
-            </select>
-
-        </label>
-
-
-        <label>
-            その他・ご要望
-
-            <textarea
-                name="message"
-                placeholder="ご希望などがあれば入力してください"
-            ></textarea>
-
-        </label>
-
-
-       <button type="submit">
-    予約する
-</button>
-    </form>
 
 </section>
 

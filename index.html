@@ -411,6 +411,7 @@
 </section>
 
 
+
 ```html
 <!-- =========================
      予約フォーム
@@ -433,20 +434,16 @@
 
         <label>
             お名前
-
             <input
                 type="text"
-                id="name"
                 name="name"
                 placeholder="山田 花子"
                 required
             >
         </label>
 
-
         <label>
             メールアドレス
-
             <input
                 type="email"
                 name="email"
@@ -455,10 +452,8 @@
             >
         </label>
 
-
         <label>
             電話番号
-
             <input
                 type="tel"
                 name="tel"
@@ -466,15 +461,9 @@
             >
         </label>
 
-
         <label>
             メニュー
-
-            <select
-                id="reservation-menu"
-                name="menu"
-            >
-
+            <select name="menu">
                 <option>カット</option>
                 <option>カラー</option>
                 <option>カット＋カラー</option>
@@ -484,28 +473,21 @@
                 <option>カット＋パーマ</option>
                 <option>カット＋トリートメント</option>
                 <option>前髪カット</option>
-
             </select>
         </label>
 
-
         <label>
             希望日
-
             <input
                 type="date"
-                id="date"
                 name="date"
                 required
             >
         </label>
 
-
         <label>
             希望時間
-
             <select name="time">
-
                 <option>10:00</option>
                 <option>11:00</option>
                 <option>12:00</option>
@@ -515,22 +497,16 @@
                 <option>16:00</option>
                 <option>17:00</option>
                 <option>18:00</option>
-
             </select>
-
         </label>
-
 
         <label>
             その他・ご要望
-
             <textarea
                 name="message"
                 placeholder="ご希望などがあれば入力してください"
             ></textarea>
-
         </label>
-
 
         <button type="submit">
             予約する
@@ -547,61 +523,64 @@
 
 <script>
 
-document.getElementById("reservation-form").addEventListener("submit", async function(event) {
+function showStaff() {
+    document.getElementById("staff-message").style.display = "block";
+}
 
-    // 通常のフォーム送信を止める
-    event.preventDefault();
 
-    // 送信ボタン
-    const button = this.querySelector("button[type='submit']");
+document
+    .getElementById("reservation-form")
+    .addEventListener("submit", async function(event) {
 
-    // 送信中表示
-    button.disabled = true;
-    button.textContent = "送信中...";
+        event.preventDefault();
 
-    // フォームのデータを取得
-    const formData = new FormData(this);
+        const form = this;
+        const button = form.querySelector("button[type='submit']");
 
-    try {
+        button.disabled = true;
+        button.textContent = "送信中...";
 
-        // Formspreeへ送信
-        const response = await fetch(
-            "https://formspree.io/f/xnpnyenl",
-            {
-                method: "POST",
-                body: formData,
-                headers: {
-                    "Accept": "application/json"
+        const formData = new FormData(form);
+
+        try {
+
+            const response = await fetch(
+                "https://formspree.io/f/xnpnyenl",
+                {
+                    method: "POST",
+                    body: formData,
+                    headers: {
+                        "Accept": "application/json"
+                    }
                 }
+            );
+
+            if (response.ok) {
+
+                window.location.href =
+                    "https://thurry.github.io/lumiere-hair/thanks.html";
+
+            } else {
+
+                alert(
+                    "送信に失敗しました。もう一度お試しください。"
+                );
+
+                button.disabled = false;
+                button.textContent = "予約する";
             }
-        );
 
-        // 送信成功
-        if (response.ok) {
+        } catch (error) {
 
-            // thanks.htmlへ移動
-            window.location.href =
-                "https://thurry.github.io/lumiere-hair/thanks.html";
-
-        } else {
-
-            // Formspree側でエラー
-            alert("送信に失敗しました。もう一度お試しください。");
+            alert(
+                "通信エラーが発生しました。もう一度お試しください。"
+            );
 
             button.disabled = false;
             button.textContent = "予約する";
         }
 
-    } catch (error) {
-
-        // 通信エラー
-        alert("通信エラーが発生しました。もう一度お試しください。");
-
-        button.disabled = false;
-        button.textContent = "予約する";
-    }
-
-});
+    });
 
 </script>
 ```
